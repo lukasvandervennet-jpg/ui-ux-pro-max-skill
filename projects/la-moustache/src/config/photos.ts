@@ -1,12 +1,12 @@
 import type { StaticImageData } from "next/image";
 
 import azizPortrait from "@/assets/photos/aziz-portrait.jpg";
-import azizStyling from "@/assets/photos/aziz-styling.jpg";
 import capCut from "@/assets/photos/cap-cut.jpg";
 import curlsResult from "@/assets/photos/curls-result.jpg";
 import interior from "@/assets/photos/interior.jpg";
 import neon from "@/assets/photos/neon.jpg";
 import spray from "@/assets/photos/spray.jpg";
+import stmntAziz from "@/assets/photos/stmnt-aziz.jpg";
 import stmntCape from "@/assets/photos/stmnt-cape.jpg";
 
 /**
@@ -21,11 +21,6 @@ export type Photo = {
 };
 
 export const photos = {
-  azizStyling: {
-    src: azizStyling,
-    alt: "Aziz Güler brengt de krullen van een klant in vorm in de lichte zaak van La Moustache",
-    caption: "Krullen in vorm brengen",
-  },
   azizPortrait: {
     src: azizPortrait,
     alt: "Aziz Güler lacht aan zijn bureau in La Moustache, met een gouden astronautbeeldje en een sfeerlamp",
@@ -33,13 +28,18 @@ export const photos = {
   },
   interior: {
     src: interior,
-    alt: "De lichte zaak van La Moustache met wasstoelen, een groene fauteuil en een groot raam, terwijl een barber een klant knipt",
+    alt: "De lichte zaak van La Moustache: een barber werkt aan de krullen van een klant, met wasstoelen en een groot raam op de achtergrond",
     caption: "De zaak in Sint-Martens-Latem",
   },
   neon: {
     src: neon,
     alt: "Barber en klant poseren voor de groene plantenmuur met het neonlogo van La Moustache",
     caption: "De neonmuur van La Moustache",
+  },
+  stmntAziz: {
+    src: stmntAziz,
+    alt: "Lachende barber met bril en handschoenen stylet het haar van een klant",
+    caption: "Styling met een glimlach",
   },
   stmntCape: {
     src: stmntCape,
@@ -64,4 +64,10 @@ export const photos = {
 } satisfies Record<string, Photo>;
 
 /** Volgorde in de galerij. */
-export const gallery: Photo[] = [photos.neon, photos.stmntCape, photos.spray, photos.curlsResult, photos.capCut];
+export const gallery: Photo[] = [
+  photos.stmntAziz,
+  photos.spray,
+  photos.curlsResult,
+  photos.stmntCape,
+  photos.capCut,
+];

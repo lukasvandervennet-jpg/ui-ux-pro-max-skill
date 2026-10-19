@@ -117,15 +117,15 @@ Facebook live. Daarom staan er nog geen reviews, prijzen of beoordelingsaantalle
 ## Gebruikte afbeeldingen en toestemming
 
 Alle foto's komen van de eigen Instagram- en Facebookaccounts van La Moustache, aangeleverd als screenshots.
-Er zijn geen stockfoto's gebruikt en er is niets aan gezichten, kapsels of resultaten veranderd. Alleen
-bijgesneden, zodat de interface van Instagram en Facebook wegvalt.
+Er zijn geen stockfoto's gebruikt en er is niets aan gezichten, kapsels of resultaten veranderd. De foto's zijn
+alleen bijgesneden, zodat de interface van Instagram en Facebook wegvalt. Twee spiegelopnames zijn teruggespiegeld.
 
 | Bestand | Inhoud | Herkenbare klant? |
 | --- | --- | --- |
-| `aziz-styling.jpg` | Aziz brengt krullen in vorm (hero, OG-beeld) | Ja |
 | `aziz-portrait.jpg` | Aziz aan zijn bureau, post van 3 april 2025 (Over ons) | Nee |
-| `interior.jpg` | De zaak met wasstoelen en raam, een barber aan het werk (De ervaring) | Ja |
-| `neon.jpg` | Barber en klant voor de neonmuur, post van 27 februari 2025 (galerij) | Ja |
+| `interior.jpg` | De zaak met wasstoelen en raam, een barber aan het werk (hero, OG-beeld) | Ja |
+| `neon.jpg` | Barber en klant voor de neonmuur, post van 27 februari 2025 (De ervaring) | Ja |
+| `stmnt-aziz.jpg` | Lachende barber stylet een klant (galerij). Gespiegeld, net als `stmnt-cape.jpg` | Ja |
 | `stmnt-cape.jpg` | Klant onder de STMNT-kapmantel (galerij). Horizontaal gespiegeld: het origineel is via een spiegel gefilmd, zodat het STMNT-logo nu leesbaar is | Ja |
 | `spray.jpg` | Haar bevochtigen voor het knippen (galerij) | Deels (zijaanzicht) |
 | `curls-result.jpg` | Portret van het resultaat: krullen met fade (galerij) | Ja |
@@ -140,6 +140,5 @@ Zwakkere uitsneden (een klant die volledig in beeld zit, wazige interieurbeelden
 zijn bewust weggelaten. Nieuwe foto's toevoegen gaat via `src/config/photos.ts`: de galerij groeit dan
 automatisch mee.
 
-⚠️ **Toestemming nodig:** Aziz moet bevestigen dat de herkenbare klanten op deze foto's akkoord gaan met
-publicatie op de website. Op sociale media posten is iets anders dan gebruik op een commerciële website (AVG,
-portretrecht). De foto van een kind uit het Instagram-raster is bewust **niet** gebruikt.
+✅ **Toestemming:** de klant bevestigde dat het gebruik van alle foto's op de website juridisch in orde is.
+De foto van een kind uit het Instagram-raster is niet gebruikt.

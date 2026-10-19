@@ -27,15 +27,15 @@ export function Hero() {
       {/* Beeld: volledig scherm op mobiel, redactioneel paneel rechts op desktop */}
       <div className="intro-settle absolute inset-0 -z-10 lg:left-auto lg:w-[46%]">
         <Image
-          src={photos.azizStyling.src}
-          alt={photos.azizStyling.alt}
+          src={photos.interior.src}
+          alt={photos.interior.alt}
           preload
           fetchPriority="high"
           fill
           placeholder="blur"
           quality={85}
           sizes="(min-width: 1024px) 46vw, 100vw"
-          className="object-cover object-[60%_30%]"
+          className="object-cover object-[68%_40%]"
         />
         {/* Leesbaarheid */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/75 to-ink/35 lg:hidden" />

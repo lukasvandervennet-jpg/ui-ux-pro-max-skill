@@ -50,12 +50,12 @@ export function Experience() {
 
         <ImageReveal className="relative aspect-[5/4] w-full overflow-hidden lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:aspect-[4/5]">
           <Image
-            src={photos.interior.src}
-            alt={photos.interior.alt}
+            src={photos.neon.src}
+            alt={photos.neon.alt}
             fill
             placeholder="blur"
             sizes="(min-width: 1024px) 40vw, 100vw"
-            className="object-cover object-[50%_25%]"
+            className="object-cover object-[35%_50%]"
           />
         </ImageReveal>
 
