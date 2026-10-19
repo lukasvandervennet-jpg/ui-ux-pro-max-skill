@@ -1,4 +1,4 @@
-import { business, openingHours, seo, social } from "@/config/site";
+import { business, openingHours, seo, social, sponsor } from "@/config/site";
 
 /**
  * Schema.org BarberShop. Bevat uitsluitend geverifieerde gegevens.
@@ -45,5 +45,6 @@ export function barberShopSchema() {
     )}`,
     sameAs: [social.instagram.url, ...(social.facebook.isDirectPage ? [social.facebook.url] : [])],
     ...(business.legal.enterpriseNumber ? { vatID: business.legal.enterpriseNumber } : {}),
+    ...(sponsor.active ? { sponsor: { "@type": "Organization", name: sponsor.name, url: sponsor.url } } : {}),
   };
 }

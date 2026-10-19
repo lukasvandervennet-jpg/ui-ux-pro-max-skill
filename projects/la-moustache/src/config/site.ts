@@ -82,6 +82,16 @@ export const social = {
   },
 } as const;
 
+/* ── Sponsor ─────────────────────────────────────────────────────────────
+ * Bevestigd door de klant. Zet `active` op false om de vermelding overal te verbergen.
+ */
+export const sponsor = {
+  active: true,
+  name: "STMNT Grooming Goods",
+  short: "STMNT",
+  url: "https://www.stmntgrooming.com",
+} as const;
+
 /* ── Openingsuren ────────────────────────────────────────────────────────
  * day: 0 = zondag … 6 = zaterdag (zoals JavaScript Date#getDay).
  * Zaterdag: Instagram vermeldt 16:00, Facebook 17:00 — nog te bevestigen.
@@ -146,7 +156,7 @@ export const services: Service[] = [
     title: "Styling",
     titleNl: "Krullen & styling",
     description:
-      "Krullen, textuur of een strakke look: gevormd, gestyled en afgewerkt met het juiste product, zodat je weet hoe je het thuis houdt.",
+      "Krullen, textuur of een strakke look: gevormd, gestyled en afgewerkt met STMNT-producten, zodat je weet hoe je het thuis houdt.",
     price: null,
     duration: null,
     published: true,

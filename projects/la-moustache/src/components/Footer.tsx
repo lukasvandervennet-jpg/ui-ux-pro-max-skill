@@ -6,6 +6,7 @@ import { groupedHours } from "@/lib/hours";
 import { links } from "@/lib/links";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "./icons";
 import { Logo } from "./Logo";
+import { SponsorBadge } from "./Sponsor";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -23,9 +24,12 @@ export function Footer() {
               The art of a <em className="font-normal italic text-gold-light">perfect</em> cut.
             </p>
           </div>
-          <Link href="/#afspraak" className="btn btn-primary self-start lg:self-auto">
-            Maak een afspraak
-          </Link>
+          <div className="flex flex-col items-start gap-4 lg:items-end">
+            <SponsorBadge tone="dark" />
+            <Link href="/#afspraak" className="btn btn-primary">
+              Maak een afspraak
+            </Link>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-10 lg:grid-cols-4 lg:gap-12 lg:pt-14">

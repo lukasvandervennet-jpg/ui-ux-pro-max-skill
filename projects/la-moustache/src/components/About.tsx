@@ -5,6 +5,7 @@ import { business, press } from "@/config/site";
 import { photos } from "@/config/photos";
 import { ImageReveal, Reveal } from "./motion";
 import { SectionHeading } from "./SectionHeading";
+import { SponsorBadge } from "./Sponsor";
 
 const facts = [
   { value: String(business.founded), label: "Geopend in Latem" },
@@ -66,6 +67,10 @@ export function About() {
                 strokeWidth={1.6}
               />
             </a>
+          </Reveal>
+
+          <Reveal delay={0.15} className="mt-8">
+            <SponsorBadge />
           </Reveal>
 
           <dl className="mt-10 grid grid-cols-3 border-t border-ink/15 sm:mt-14">

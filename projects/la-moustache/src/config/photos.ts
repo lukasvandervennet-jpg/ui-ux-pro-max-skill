@@ -41,7 +41,7 @@ export const photos = {
   products: {
     src: products,
     alt: "Potten STMNT-stylingproducten op een houten rek in de zaak",
-    caption: "Afgewerkt met STMNT",
+    caption: "Afgewerkt met STMNT Grooming Goods, sponsor van La Moustache",
   },
 } satisfies Record<string, Photo>;
 

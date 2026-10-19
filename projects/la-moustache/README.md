@@ -46,6 +46,7 @@ Typecheck: `npm run lint`
 | Diensten, prijzen en duur | `src/config/site.ts` → `services` |
 | Reviews (alleen geverifieerde worden getoond) | `src/config/site.ts` → `reviews`, `reviewSummary` |
 | Instagram en Facebook | `src/config/site.ts` → `social` |
+| Sponsor (STMNT) | `src/config/site.ts` → `sponsor` |
 | SEO-titel, beschrijving, zoekwoorden | `src/config/site.ts` → `seo` |
 | Foto's en alt-teksten | `src/assets/photos/*` en `src/config/photos.ts` |
 
@@ -108,6 +109,10 @@ Facebook live. Daarom staan er nog geen reviews, prijzen of beoordelingsaantalle
 12. **Originele foto's** in hoge resolutie. De huidige beelden zijn uitgesneden uit screenshots van Instagram- en
     Facebookvideo's, dus ze zijn zachter dan nodig.
 13. **Privacyverklaring:** klopt de zin dat klantfoto's enkel met toestemming gepubliceerd worden?
+14. **Sponsor STMNT Grooming Goods:** staat op de site in "Over ons", de footer, de Styling-dienst en de
+    structured data, omdat de klant bevestigde dat Aziz door STMNT gesponsord wordt. Vraag STMNT of ze akkoord gaan
+    met de vermelding, of ze een officieel logo willen laten gebruiken, en controleer de link
+    (`https://www.stmntgrooming.com`). Uitzetten kan met `sponsor.active = false` in `src/config/site.ts`.
 
 ## Gebruikte afbeeldingen en toestemming
 
