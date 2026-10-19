@@ -8,6 +8,7 @@ export function SectionHeading({
   tone = "dark",
   className,
   id,
+  size = "lg",
 }: {
   index: string;
   label: string;
@@ -15,6 +16,7 @@ export function SectionHeading({
   tone?: "dark" | "light";
   className?: string;
   id?: string;
+  size?: "lg" | "md";
 }) {
   return (
     <div className={className}>
@@ -28,7 +30,8 @@ export function SectionHeading({
       <h2
         id={id}
         className={cn(
-          "display mt-6 text-[clamp(2.75rem,7vw,6rem)]",
+          "display mt-4 sm:mt-6",
+          size === "lg" ? "text-[clamp(2.5rem,7vw,6rem)]" : "text-[clamp(2.5rem,5vw,4.5rem)]",
           tone === "dark" ? "text-ivory" : "text-ink",
         )}
       >

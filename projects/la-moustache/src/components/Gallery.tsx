@@ -6,31 +6,22 @@ import { useState } from "react";
 
 import { gallery } from "@/config/photos";
 import { social } from "@/config/site";
-import { cn } from "@/lib/cn";
 import { InstagramIcon } from "./icons";
 import { Lightbox } from "./Lightbox";
 import { Reveal } from "./motion";
 import { SectionHeading } from "./SectionHeading";
 
 /**
- * Redactioneel raster. Op mobiel: natuurlijke verhoudingen in twee kolommen.
- * Op desktop: vaste plaatsing in 12 kolommen. Volgorde = config/photos.ts.
+ * Compact raster: 2×2 op mobiel, één rij van vier op desktop (drie foto's + Instagram).
+ * Volgorde = config/photos.ts. Bij meer foto's loopt het raster gewoon door.
  */
-const cells = [
-  "col-span-2 aspect-[4/5] lg:col-span-5 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:aspect-auto",
-  "aspect-[4/5] lg:col-span-4 lg:col-start-6 lg:row-span-2 lg:row-start-1 lg:aspect-auto",
-  "aspect-[4/5] lg:col-span-3 lg:col-start-10 lg:row-span-2 lg:row-start-1 lg:aspect-auto",
-  "aspect-[3/4] lg:col-span-3 lg:col-start-6 lg:row-span-2 lg:row-start-3 lg:aspect-auto",
-  "aspect-[3/4] lg:col-span-4 lg:col-start-9 lg:row-span-2 lg:row-start-3 lg:aspect-auto",
-];
-
 export function Gallery() {
   const [index, setIndex] = useState<number | null>(null);
 
   return (
-    <section id="gallery" aria-labelledby="gallery-title" className="on-light relative bg-ivory py-24 text-ink sm:py-32 lg:py-44">
+    <section id="gallery" aria-labelledby="gallery-title" className="on-light relative bg-ivory py-16 text-ink sm:py-24 lg:py-36">
       <div className="container-luxe">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-8">
           <SectionHeading index="03" label="Gallery" title={["Our", "work."]} tone="light" className="lg:col-span-7" id="gallery-title" />
           <Reveal className="max-w-md text-[1.0625rem] leading-relaxed text-ink/70 lg:col-span-5 lg:justify-self-end">
             Fades, krullen, klassieke snitten en styling — rechtstreeks uit de stoel bij La Moustache. Klik op een
@@ -38,9 +29,9 @@ export function Gallery() {
           </Reveal>
         </div>
 
-        <ul className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:mt-20 lg:grid-cols-12 lg:grid-rows-[repeat(4,minmax(0,13.5rem))] xl:grid-rows-[repeat(4,minmax(0,15rem))]">
+        <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:mt-16 lg:grid-cols-4">
           {gallery.map((photo, i) => (
-            <li key={photo.caption} className={cn("relative", cells[i] ?? "aspect-[4/5] lg:col-span-4")}>
+            <li key={photo.caption} className="relative aspect-[4/5]">
               <Reveal delay={(i % 3) * 0.08} className="h-full">
                 <button
                   type="button"
@@ -53,7 +44,7 @@ export function Gallery() {
                     alt={photo.alt}
                     fill
                     placeholder="blur"
-                    sizes={i === 0 ? "(min-width: 1024px) 42vw, 100vw" : "(min-width: 1024px) 34vw, 50vw"}
+                    sizes="(min-width: 1024px) 24vw, 50vw"
                     className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100 group-focus-visible:opacity-100" />
@@ -69,13 +60,13 @@ export function Gallery() {
           ))}
 
           {/* Instagram-tegel */}
-          <li className="col-span-2 lg:col-span-5 lg:col-start-1 lg:row-start-4">
+          <li className="relative aspect-[4/5]">
             <Reveal className="h-full">
               <a
                 href={social.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex size-full min-h-56 flex-col justify-between bg-ink p-7 text-ivory transition-colors duration-700 hover:bg-graphite sm:p-9"
+                className="group flex size-full flex-col justify-between bg-ink p-5 text-ivory transition-colors duration-700 hover:bg-graphite sm:p-8"
               >
                 <span className="flex items-center justify-between">
                   <InstagramIcon className="size-6 text-gold" />
@@ -86,8 +77,8 @@ export function Gallery() {
                   />
                 </span>
                 <span>
-                  <span className="display block text-[clamp(2rem,3.4vw,2.9rem)]">More on Instagram</span>
-                  <span className="mt-2 block text-sm text-ivory/60">{social.instagram.handle}</span>
+                  <span className="display block text-[clamp(1.6rem,3vw,2.6rem)]">More on Instagram</span>
+                  <span className="mt-2 block text-[0.6875rem] text-ivory/60 sm:text-[0.8125rem]">{social.instagram.handle}</span>
                 </span>
               </a>
             </Reveal>

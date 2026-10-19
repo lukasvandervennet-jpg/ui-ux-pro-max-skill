@@ -72,10 +72,10 @@ export function MapConsent() {
       </div>
 
       <div className="relative mx-auto flex flex-col items-center text-center">
-        <span className="relative inline-flex size-20 items-center justify-center rounded-full border border-gold/50">
+        <span className="relative hidden size-20 items-center justify-center rounded-full border border-gold/50 sm:inline-flex">
           <MoustacheMark className="w-10 text-gold" />
         </span>
-        <p className="mt-6 max-w-xs text-[0.9375rem] leading-relaxed text-ivory/75">
+        <p className="max-w-xs text-[0.9375rem] leading-relaxed text-ivory/75 sm:mt-6">
           Bij het tonen van de kaart worden gegevens uitgewisseld met Google.{" "}
           <Link href="/cookies" className="underline decoration-ivory/30 underline-offset-4 hover:decoration-gold">
             Meer info

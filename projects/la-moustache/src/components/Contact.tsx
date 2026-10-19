@@ -1,13 +1,13 @@
 import { ArrowUpRight, Mail, MapPin, Navigation, Phone } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { business, openingHours, social } from "@/config/site";
-import { formatRange } from "@/lib/hours";
+import { business, social } from "@/config/site";
+import { groupedHours } from "@/lib/hours";
 import { links } from "@/lib/links";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "./icons";
 import { MapConsent } from "./MapConsent";
 import { Reveal } from "./motion";
-import { OpenStatusBadge, TodayHighlight } from "./OpenStatus";
+import { OpenStatusBadge } from "./OpenStatus";
 import { SectionHeading } from "./SectionHeading";
 
 function ContactRow({
@@ -39,7 +39,7 @@ function ContactRow({
       )}
     </>
   );
-  const cls = "group flex items-start gap-4 border-b border-ink/12 py-5";
+  const cls = "group flex items-start gap-4 border-b border-ink/12 py-4";
   return (
     <li>
       {href ? (
@@ -56,16 +56,16 @@ function ContactRow({
 export function Contact() {
   const iconCls = "size-[1.125rem]";
   return (
-    <section id="contact" aria-labelledby="contact-title" className="on-light relative bg-ivory py-24 text-ink sm:py-32 lg:py-44">
-      <div className="container-luxe grid gap-16 lg:grid-cols-12 lg:gap-12">
+    <section id="contact" aria-labelledby="contact-title" className="on-light relative bg-ivory py-16 text-ink sm:py-24 lg:py-36">
+      <div className="container-luxe grid gap-10 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-6">
           <SectionHeading index="07" label="Contact & locatie" title={["Find your", "barber."]} tone="light" id="contact-title" />
 
-          <Reveal className="mt-8">
+          <Reveal className="mt-6 sm:mt-8">
             <OpenStatusBadge />
           </Reveal>
 
-          <Reveal className="mt-10">
+          <Reveal className="mt-8 sm:mt-10">
             <p className="font-display text-[1.75rem] leading-tight text-ink">{business.name}</p>
             <ul className="mt-4 border-t border-ink/12">
               <ContactRow
@@ -106,43 +106,27 @@ export function Contact() {
             </ul>
           </Reveal>
 
-          <Reveal className="mt-12 grid gap-10 sm:grid-cols-2">
+          <Reveal className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h3 className="eyebrow text-stone">Openingsuren</h3>
-              <table className="mt-4 w-full text-[0.9375rem] text-ink/75">
-                <caption className="sr-only">Openingsuren per dag</caption>
-                <tbody>
-                  {openingHours.map((d) => (
-                    <TodayHighlight key={d.day} day={d.day}>
-                      <th scope="row" className="py-1.5 text-left font-normal">
-                        {d.label}
-                      </th>
-                      <td className="py-1.5 text-right tabular-nums">{formatRange(d)}</td>
-                    </TodayHighlight>
-                  ))}
-                </tbody>
-              </table>
+              <dl className="mt-3 space-y-1.5 text-[0.9375rem] text-ink/80">
+                {groupedHours().map((g) => (
+                  <div key={g.days} className="flex justify-between gap-8">
+                    <dt>{g.days}</dt>
+                    <dd className="tabular-nums">{g.range}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-3 text-[0.875rem] font-semibold text-ink">Enkel op afspraak</p>
             </div>
-            <div className="flex flex-col justify-between gap-6">
-              <p className="text-[0.9375rem] leading-relaxed text-ink/70">
-                <strong className="font-semibold text-ink">Enkel op afspraak.</strong> Maak vooraf een afspraak via
-                WhatsApp of telefoon, zo ben je zeker van je plaats.
-              </p>
-              <div className="flex flex-col gap-3">
-                <a href={links.mapsDirections} target="_blank" rel="noopener noreferrer" className="btn btn-dark">
-                  <Navigation className="size-4" aria-hidden="true" strokeWidth={1.6} />
-                  Routebeschrijving
-                </a>
-                <a href={links.tel} className="btn btn-outline-dark">
-                  <Phone className="size-4" aria-hidden="true" strokeWidth={1.6} />
-                  Bel nu
-                </a>
-              </div>
-            </div>
+            <a href={links.mapsDirections} target="_blank" rel="noopener noreferrer" className="btn btn-dark">
+              <Navigation className="size-4" aria-hidden="true" strokeWidth={1.6} />
+              Routebeschrijving
+            </a>
           </Reveal>
         </div>
 
-        <Reveal className="relative min-h-[28rem] overflow-hidden lg:col-span-6 lg:min-h-0" delay={0.1}>
+        <Reveal className="relative h-[22rem] overflow-hidden sm:h-[26rem] lg:col-span-6 lg:h-auto" delay={0.1}>
           <div className="absolute inset-0">
             <MapConsent />
           </div>

@@ -28,7 +28,7 @@ function Stamp({ className }: { className?: string }) {
 
 export function Booking() {
   return (
-    <section id="afspraak" aria-labelledby="booking-title" className="grain relative bg-graphite py-24 sm:py-32 lg:py-40">
+    <section id="afspraak" aria-labelledby="booking-title" className="grain relative bg-graphite py-12 sm:py-24 lg:py-32">
       <div className="container-luxe">
         <Reveal className="on-light relative mx-auto max-w-6xl overflow-hidden bg-ivory text-ink shadow-[0_60px_120px_-60px_rgba(0,0,0,0.8)]">
           <div className="grid lg:grid-cols-[1.35fr_1fr]">
@@ -93,10 +93,10 @@ export function Booking() {
                 <tbody>
                   {openingHours.map((d) => (
                     <TodayHighlight key={d.day} day={d.day} className="border-b border-ink/10 last:border-b-0">
-                      <th scope="row" className="py-2.5 text-left font-normal">
+                      <th scope="row" className="py-2 text-left font-normal sm:py-2.5">
                         {d.label}
                       </th>
-                      <td className={`py-2.5 text-right tabular-nums ${d.open ? "" : "text-stone"}`}>{formatRange(d)}</td>
+                      <td className={`py-2 text-right tabular-nums sm:py-2.5 ${d.open ? "" : "text-stone"}`}>{formatRange(d)}</td>
                     </TodayHighlight>
                   ))}
                 </tbody>

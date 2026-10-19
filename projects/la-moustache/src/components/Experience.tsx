@@ -10,7 +10,7 @@ const pillars = [
     text: "Een lichte zaak met een groot raam, zachte fauteuils en groen. Geen drukte, geen wachtrij.",
   },
   {
-    title: "Persoonlijke aandacht",
+    title: "Aandacht",
     text: "Enkel op afspraak, dus dit moment is van jou. Eerst praten, dan pas knippen.",
   },
   {
@@ -25,43 +25,49 @@ const pillars = [
 
 export function Experience() {
   return (
-    <section id="ervaring" aria-labelledby="experience-title" className="relative overflow-hidden bg-ink">
-      <div className="grid lg:grid-cols-[5fr_7fr]">
-        <div className="relative min-h-[70svh] lg:min-h-0">
-          <Image
-            src={photos.interiorWindow.src}
-            alt={photos.interiorWindow.alt}
-            fill
-            placeholder="blur"
-            sizes="(min-width: 1024px) 42vw, 100vw"
-            className="object-cover"
+    <section id="ervaring" aria-labelledby="experience-title" className="on-light relative bg-ivory-deep py-16 text-ink sm:py-24 lg:py-36">
+      <div className="container-luxe grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
+        <div className="lg:col-span-5">
+          <SectionHeading
+            index="05"
+            label="De ervaring"
+            title={["Take a seat.", "Leave sharp."]}
+            tone="light"
+            size="md"
+            id="experience-title"
           />
-          <div className="absolute inset-0 bg-ink/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-ink/70" />
-          <p className="absolute bottom-6 left-5 text-[0.8125rem] text-ivory/70 sm:left-10 lg:bottom-10 lg:left-10">
-            La Moustache · Sint-Martens-Latem
-          </p>
+          <Reveal className="mt-6 max-w-md text-[1.0625rem] leading-relaxed text-ink/75 sm:mt-8">
+            Een bezoek aan La Moustache is tijd voor jezelf. Je wordt ontvangen, er wordt geluisterd en er wordt met
+            aandacht gewerkt, in een sfeer die eerder aanvoelt als een woonkamer dan als een zaak.
+          </Reveal>
+          <Reveal className="mt-8 hidden lg:block">
+            <figure>
+              <div className="relative aspect-[3/1] w-full max-w-md overflow-hidden">
+                <Image
+                  src={photos.products.src}
+                  alt={photos.products.alt}
+                  fill
+                  placeholder="blur"
+                  sizes="28rem"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 text-[0.8125rem] text-stone">{photos.products.caption}</figcaption>
+            </figure>
+          </Reveal>
         </div>
 
-        <div className="grain relative flex items-center py-24 sm:py-32 lg:py-36">
-          <div className="w-full px-5 sm:px-10 lg:px-14 xl:px-20">
-            <SectionHeading index="05" label="De ervaring" title={["Take a seat.", "Leave sharp."]} id="experience-title" />
-            <Reveal className="mt-8 max-w-md text-[1.0625rem] leading-relaxed text-ivory/70">
-              Een bezoek aan La Moustache is tijd voor jezelf. Je wordt ontvangen, er wordt geluisterd en er
-              wordt met aandacht gewerkt — in een sfeer die eerder aanvoelt als een woonkamer dan als een zaak.
-            </Reveal>
-
-            <ol className="mt-14 grid gap-px overflow-hidden border border-ivory/10 bg-ivory/10 sm:grid-cols-2">
-              {pillars.map((p, i) => (
-                <RevealItem key={p.title} delay={i * 0.06} className="bg-ink p-7">
-                  <span className="font-display text-lg tabular-nums text-gold">0{i + 1}</span>
-                  <h3 className="mt-4 font-display text-[1.75rem] font-medium leading-tight text-ivory">{p.title}</h3>
-                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-ivory/60">{p.text}</p>
-                </RevealItem>
-              ))}
-            </ol>
-          </div>
-        </div>
+        <ol className="grid grid-cols-2 gap-px overflow-hidden border border-ink/10 bg-ink/10 lg:col-span-7">
+          {pillars.map((p, i) => (
+            <RevealItem key={p.title} delay={i * 0.06} className="bg-ivory-deep p-4 xs:p-5 sm:p-8">
+              <span className="font-display text-base tabular-nums text-bronze sm:text-lg">0{i + 1}</span>
+              <h3 className="mt-2 font-display text-[1.3rem] font-medium leading-tight text-ink sm:mt-4 sm:text-[1.75rem]">
+                {p.title}
+              </h3>
+              <p className="mt-2 text-[0.8125rem] leading-relaxed text-ink/65 sm:mt-3 sm:text-[0.9375rem]">{p.text}</p>
+            </RevealItem>
+          ))}
+        </ol>
       </div>
     </section>
   );

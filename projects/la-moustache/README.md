@@ -117,13 +117,15 @@ bijgesneden, zodat de interface van Instagram en Facebook wegvalt.
 
 | Bestand | Inhoud | Herkenbare klant? |
 | --- | --- | --- |
-| `aziz-styling.jpg` | Aziz brengt krullen in vorm (hero, OG-beeld, galerij) | Ja |
-| `curls-kenzo.jpg` | Krullen met fade (galerij) | Ja |
+| `aziz-styling.jpg` | Aziz brengt krullen in vorm (hero, OG-beeld) | Ja |
+| `aziz-detail.jpg` | Close-up: Aziz werkt product in de krullen (galerij) | Ja |
+| `curls-result.jpg` | Portret van het resultaat: krullen met fade (galerij) | Ja |
 | `cap-cut.jpg` | Aziz knipt met de schaar (Over ons, galerij) | Deels (gezicht naar beneden) |
-| `clipper-cut.jpg` | Fade met de tondeuse (galerij) | Ja |
-| `interior-window.jpg` | Interieur met wasstoelen (Experience) | Nee |
-| `interior-lounge.jpg` | Groene fauteuil bij het raam (galerij) | Nee |
-| `shelf-detail.jpg` | Detail van het interieur (Over ons) | Nee |
+| `products.jpg` | STMNT-stylingproducten op het rek (Experience, enkel desktop) | Nee |
+
+Zwakkere uitsneden (een klant die volledig in beeld zit, wazige interieurbeelden, een decoratieve basketbal)
+zijn bewust weggelaten. De site toont liever drie sterke foto's dan zes middelmatige. Nieuwe foto's toevoegen gaat
+via `src/config/photos.ts`: de galerij groeit dan automatisch mee.
 
 ⚠️ **Toestemming nodig:** Aziz moet bevestigen dat de herkenbare klanten op deze foto's akkoord gaan met
 publicatie op de website. Op sociale media posten is iets anders dan gebruik op een commerciële website (AVG,

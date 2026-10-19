@@ -15,11 +15,11 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-ivory/10 bg-[#0b0b0b] text-ivory">
-      <div className="container-luxe py-20 lg:py-28">
-        <div className="flex flex-col gap-10 border-b border-ivory/10 pb-16 lg:flex-row lg:items-end lg:justify-between">
+      <div className="container-luxe py-14 lg:py-28">
+        <div className="flex flex-col gap-8 border-b border-ivory/10 pb-10 lg:flex-row lg:items-end lg:justify-between lg:gap-10 lg:pb-16">
           <div>
             <Logo size="lg" />
-            <p className="display mt-10 max-w-xl text-[clamp(2.2rem,5vw,4rem)] text-ivory">
+            <p className="display mt-8 max-w-xl text-[clamp(2rem,5vw,4rem)] text-ivory lg:mt-10">
               The art of a <em className="font-normal italic text-gold-light">perfect</em> cut.
             </p>
           </div>
@@ -28,7 +28,7 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="grid gap-12 pt-14 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-10 lg:grid-cols-4 lg:gap-12 lg:pt-14">
           <nav aria-label="Footernavigatie">
             <h2 className="eyebrow text-gold">Navigatie</h2>
             <ul className="mt-5 space-y-3 text-[0.9375rem] text-ivory/70">
@@ -69,7 +69,7 @@ export function Footer() {
             <h2 className="eyebrow text-gold">Openingsuren</h2>
             <dl className="mt-5 space-y-3 text-[0.9375rem] text-ivory/70">
               {groupedHours().map((g) => (
-                <div key={g.days} className="flex justify-between gap-4">
+                <div key={g.days} className="flex flex-col lg:flex-row lg:justify-between lg:gap-4">
                   <dt>{g.days}</dt>
                   <dd className="tabular-nums text-ivory/85">{g.range}</dd>
                 </div>

@@ -17,11 +17,11 @@ export function Reviews() {
   const hasSummary = reviewSummary.rating !== null && reviewSummary.count !== null;
 
   return (
-    <section id="reviews" aria-labelledby="reviews-title" className="grain relative overflow-hidden bg-ink py-24 sm:py-32 lg:py-44">
+    <section id="reviews" aria-labelledby="reviews-title" className="grain relative overflow-hidden bg-ink py-16 sm:py-24 lg:py-36">
       <MoustacheMark className="pointer-events-none absolute -right-24 top-16 w-[38rem] max-w-none text-ivory/[0.03] lg:-right-10" />
 
       <div className="container-luxe relative">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
           <SectionHeading
             index="04"
             label="Reviews"
@@ -44,7 +44,7 @@ export function Reviews() {
         {verified.length > 0 ? (
           <ReviewSlider reviews={verified} />
         ) : (
-          <Reveal className="mt-16 grid gap-10 border-t border-ivory/12 pt-12 lg:mt-24 lg:grid-cols-12 lg:pt-16">
+          <Reveal className="mt-10 grid gap-8 border-t border-ivory/12 pt-8 lg:mt-24 lg:grid-cols-12 lg:gap-10 lg:pt-16">
             <p className="font-display text-[clamp(1.75rem,3.4vw,2.75rem)] leading-[1.15] text-ivory lg:col-span-7">
               Wat klanten over La Moustache zeggen, lees je het best bij de bron:{" "}
               <em className="italic text-gold-light">ongefilterd, in hun eigen woorden.</em>
