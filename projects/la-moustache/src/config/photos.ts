@@ -1,10 +1,13 @@
 import type { StaticImageData } from "next/image";
 
-import azizDetail from "@/assets/photos/aziz-detail.jpg";
+import azizPortrait from "@/assets/photos/aziz-portrait.jpg";
 import azizStyling from "@/assets/photos/aziz-styling.jpg";
 import capCut from "@/assets/photos/cap-cut.jpg";
 import curlsResult from "@/assets/photos/curls-result.jpg";
-import products from "@/assets/photos/products.jpg";
+import interior from "@/assets/photos/interior.jpg";
+import neon from "@/assets/photos/neon.jpg";
+import spray from "@/assets/photos/spray.jpg";
+import stmntCape from "@/assets/photos/stmnt-cape.jpg";
 
 /**
  * Alle foto's komen van het eigen Instagram- en Facebookaccount van La Moustache.
@@ -23,10 +26,30 @@ export const photos = {
     alt: "Aziz Güler brengt de krullen van een klant in vorm in de lichte zaak van La Moustache",
     caption: "Krullen in vorm brengen",
   },
-  azizDetail: {
-    src: azizDetail,
-    alt: "Aziz Güler werkt met handschoenen product in de krullen van een klant",
-    caption: "Styling met de hand",
+  azizPortrait: {
+    src: azizPortrait,
+    alt: "Aziz Güler lacht aan zijn bureau in La Moustache, met een gouden astronautbeeldje en een sfeerlamp",
+    caption: "Aziz Güler in zijn eigen zaak",
+  },
+  interior: {
+    src: interior,
+    alt: "De lichte zaak van La Moustache met wasstoelen, een groene fauteuil en een groot raam, terwijl een barber een klant knipt",
+    caption: "De zaak in Sint-Martens-Latem",
+  },
+  neon: {
+    src: neon,
+    alt: "Barber en klant poseren voor de groene plantenmuur met het neonlogo van La Moustache",
+    caption: "De neonmuur van La Moustache",
+  },
+  stmntCape: {
+    src: stmntCape,
+    alt: "Lachende klant met snor onder een zwarte STMNT Grooming Goods-kapmantel, terwijl zijn haar gestyled wordt",
+    caption: "Gestyled onder de STMNT-kapmantel",
+  },
+  spray: {
+    src: spray,
+    alt: "Barber bevochtigt het haar van een klant met een sproeier voor het knippen",
+    caption: "Voorbereiden voor de snit",
   },
   curlsResult: {
     src: curlsResult,
@@ -38,12 +61,7 @@ export const photos = {
     alt: "Aziz Güler, met pet en bril, knipt een klant met de schaar",
     caption: "Precisiewerk met de schaar",
   },
-  products: {
-    src: products,
-    alt: "Potten STMNT-stylingproducten op een houten rek in de zaak",
-    caption: "Afgewerkt met STMNT Grooming Goods, sponsor van La Moustache",
-  },
 } satisfies Record<string, Photo>;
 
-/** Volgorde in de galerij (de layout van het raster volgt deze volgorde). */
-export const gallery: Photo[] = [photos.curlsResult, photos.azizDetail, photos.capCut];
+/** Volgorde in de galerij. */
+export const gallery: Photo[] = [photos.neon, photos.stmntCape, photos.spray, photos.curlsResult, photos.capCut];

@@ -123,14 +123,22 @@ bijgesneden, zodat de interface van Instagram en Facebook wegvalt.
 | Bestand | Inhoud | Herkenbare klant? |
 | --- | --- | --- |
 | `aziz-styling.jpg` | Aziz brengt krullen in vorm (hero, OG-beeld) | Ja |
-| `aziz-detail.jpg` | Close-up: Aziz werkt product in de krullen (galerij) | Ja |
+| `aziz-portrait.jpg` | Aziz aan zijn bureau, post van 3 april 2025 (Over ons) | Nee |
+| `interior.jpg` | De zaak met wasstoelen en raam, een barber aan het werk (De ervaring) | Ja |
+| `neon.jpg` | Barber en klant voor de neonmuur, post van 27 februari 2025 (galerij) | Ja |
+| `stmnt-cape.jpg` | Klant onder de STMNT-kapmantel (galerij). Horizontaal gespiegeld: het origineel is via een spiegel gefilmd, zodat het STMNT-logo nu leesbaar is | Ja |
+| `spray.jpg` | Haar bevochtigen voor het knippen (galerij) | Deels (zijaanzicht) |
 | `curls-result.jpg` | Portret van het resultaat: krullen met fade (galerij) | Ja |
-| `cap-cut.jpg` | Aziz knipt met de schaar (Over ons, galerij) | Deels (gezicht naar beneden) |
-| `products.jpg` | STMNT-stylingproducten op het rek (Experience, enkel desktop) | Nee |
+| `cap-cut.jpg` | Aziz knipt met de schaar (galerij) | Deels (gezicht naar beneden) |
+
+Het citaat in "Over ons" komt letterlijk uit Aziz' Instagrampost van 3 april 2025.
+
+Bij `interior.jpg`, `neon.jpg` en `spray.jpg` is niet zeker of de barber in beeld Aziz zelf is. De alt-teksten
+noemen daarom geen naam. Laat Aziz dit bevestigen.
 
 Zwakkere uitsneden (een klant die volledig in beeld zit, wazige interieurbeelden, een decoratieve basketbal)
-zijn bewust weggelaten. De site toont liever drie sterke foto's dan zes middelmatige. Nieuwe foto's toevoegen gaat
-via `src/config/photos.ts`: de galerij groeit dan automatisch mee.
+zijn bewust weggelaten. Nieuwe foto's toevoegen gaat via `src/config/photos.ts`: de galerij groeit dan
+automatisch mee.
 
 ⚠️ **Toestemming nodig:** Aziz moet bevestigen dat de herkenbare klanten op deze foto's akkoord gaan met
 publicatie op de website. Op sociale media posten is iets anders dan gebruik op een commerciële website (AVG,

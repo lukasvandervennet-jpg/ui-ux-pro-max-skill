@@ -21,12 +21,12 @@ export function About() {
         <div className="order-2 lg:order-none lg:col-span-5 lg:self-start">
           <ImageReveal className="relative mx-auto aspect-square w-full max-w-[26rem] overflow-hidden rounded-[2px] bg-ivory-deep sm:aspect-[4/5] lg:mx-0">
             <Image
-              src={photos.capCut.src}
-              alt={photos.capCut.alt}
+              src={photos.azizPortrait.src}
+              alt={photos.azizPortrait.alt}
               fill
               placeholder="blur"
               sizes="(min-width: 1024px) 26rem, 90vw"
-              className="object-cover object-top"
+              className="object-cover object-[60%_30%]"
             />
           </ImageReveal>
           <p className="mx-auto mt-4 flex max-w-[26rem] items-center gap-3 text-[0.8125rem] text-stone lg:mx-0">
@@ -50,6 +50,18 @@ export function About() {
               tot elke lijn klopt. Geen haast, geen standaardwerk — van een vloeiende fade tot krullen die eindelijk doen
               wat ze moeten doen.
             </p>
+          </Reveal>
+
+          <Reveal delay={0.05}>
+            <figure className="mt-8 border-l-2 border-bronze/50 pl-5">
+              <blockquote className="font-display text-[1.45rem] italic leading-snug text-ink sm:text-[1.65rem]">
+                “Dromen beginnen klein, maar groeien met passie en doorzettingsvermogen. Vandaag sta ik hier, in mijn
+                eigen barbershop…”
+              </blockquote>
+              <figcaption className="mt-3 text-[0.8125rem] text-stone">
+                {business.owner}, op Instagram · april 2025
+              </figcaption>
+            </figure>
           </Reveal>
 
           <Reveal delay={0.1}>

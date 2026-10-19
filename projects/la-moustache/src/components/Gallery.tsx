@@ -12,7 +12,7 @@ import { Reveal } from "./motion";
 import { SectionHeading } from "./SectionHeading";
 
 /**
- * Compact raster: 2×2 op mobiel, één rij van vier op desktop (drie foto's + Instagram).
+ * Compact raster: twee kolommen op mobiel, drie op desktop (foto's + Instagram-tegel).
  * Volgorde = config/photos.ts. Bij meer foto's loopt het raster gewoon door.
  */
 export function Gallery() {
@@ -29,7 +29,7 @@ export function Gallery() {
           </Reveal>
         </div>
 
-        <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:mt-16 lg:grid-cols-4">
+        <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:mt-16 lg:grid-cols-3">
           {gallery.map((photo, i) => (
             <li key={photo.caption} className="relative aspect-[4/5]">
               <Reveal delay={(i % 3) * 0.08} className="h-full">
@@ -44,7 +44,7 @@ export function Gallery() {
                     alt={photo.alt}
                     fill
                     placeholder="blur"
-                    sizes="(min-width: 1024px) 24vw, 50vw"
+                    sizes="(min-width: 1024px) 32vw, 50vw"
                     className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100 group-focus-visible:opacity-100" />
