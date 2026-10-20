@@ -177,3 +177,19 @@ export function ownerMail(kind: "new" | "cancelled", b: StoredBooking, ctx: Mail
     text: lines.join("\n"),
   };
 }
+
+/** Testmail vanaf de instellingen-check: bewijst dat versturen werkt. */
+export function testMail(to: string, ctx: MailContext): MailMessage {
+  const body = [
+    h1("Het werkt."),
+    p("Dit is een testmail van de website van La Moustache. Als je dit leest, kan de website e-mails versturen."),
+    p("Zo zien de bevestigingsmails en bedankmails voor klanten eruit: zelfde kop, zelfde stijl."),
+  ].join("");
+  return {
+    to,
+    subject: "Testmail van de website van La Moustache",
+    html: layout(ctx, "Het versturen van e-mails werkt.", body),
+    text: "Dit is een testmail van de website van La Moustache. Als je dit leest, kan de website e-mails versturen.",
+    replyTo: ctx.replyTo,
+  };
+}

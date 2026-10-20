@@ -121,11 +121,15 @@ Na het wijzigen van de stand op Vercel: opnieuw deployen.
    e-mailadres van het serviceaccount toe met **"Wijzigingen aanbrengen in afspraken"**.
 6. Noteer de **agenda-ID** (onder *Agenda integreren*; bij de hoofdagenda is dat het Gmail-adres).
 
-**2. E-mail instellen via [Resend](https://resend.com)** (gratis tot 3.000 mails per maand)
+**2. E-mail instellen.** Kies één van twee:
 
-1. Maak een account en voeg het domein van de website toe. Kies als regio **Ierland (eu-west-1)**.
-2. Zet de DNS-records die Resend toont bij de domeinregistrar (nodig zodat mails niet in spam belanden).
-3. Maak een **API-sleutel** aan.
+- **Gmail (snelst, geen domeinnaam nodig).** Gebruik het Gmail-adres van de zaak. Zet op dat Google-account
+  *verificatie in twee stappen* aan en maak via [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
+  een **app-wachtwoord** aan (16 letters). Vul `SMTP_USER` (het Gmail-adres) en `SMTP_PASS` (het app-wachtwoord) in.
+  Gmail verstuurt tot ± 500 mails per dag.
+- **[Resend](https://resend.com)** (professioneler, zodra er een eigen domeinnaam is; gratis tot 3.000 mails per
+  maand). Voeg het domein toe met regio **Ierland (eu-west-1)**, zet de DNS-records, maak een API-sleutel en vul
+  `RESEND_API_KEY` en `MAIL_FROM` in. Is Resend ingesteld, dan heeft het voorrang op Gmail.
 
 **3. Op Vercel invullen** (*Project → Settings → Environment Variables*). Zie ook `.env.example`.
 
@@ -135,8 +139,8 @@ Na het wijzigen van de stand op Vercel: opnieuw deployen.
 | `GOOGLE_SERVICE_ACCOUNT_EMAIL` | `client_email` uit het JSON-bestand |
 | `GOOGLE_PRIVATE_KEY` | `private_key` uit het JSON-bestand (volledig, met `-----BEGIN…`) |
 | `GOOGLE_CALENDAR_ID` | de agenda-ID uit stap 1.6 |
-| `RESEND_API_KEY` | de sleutel uit stap 2.3 |
-| `MAIL_FROM` | bv. `La Moustache <afspraken@domein.be>` (adres op het geverifieerde domein) |
+| `SMTP_USER` en `SMTP_PASS` | Gmail-adres en app-wachtwoord (optie Gmail) |
+| `RESEND_API_KEY` en `MAIL_FROM` | sleutel en afzender, bv. `La Moustache <afspraken@domein.be>` (optie Resend) |
 | `MAIL_REPLY_TO` | het adres waarop klanten mogen antwoorden |
 | `BOOKING_SECRET` | een lange willekeurige tekst (beveiligt de annuleerlinks) |
 | `CRON_SECRET` | een lange willekeurige tekst (beveiligt de dagelijkse bedankmail-taak) |
@@ -144,7 +148,14 @@ Na het wijzigen van de stand op Vercel: opnieuw deployen.
 
 **4. Deployen.** De dagelijkse bedankmail staat al ingepland in `vercel.json` (19:15 UTC = 20:15 of 21:15 in België).
 
-**5. Testen.** Boek zelf een afspraak, controleer de agenda en de bevestigingsmail, en annuleer via de link.
+**5. Controleren.** Open `/instellingen?sleutel=…` (met de waarde van `BOOKING_SECRET`). Die pagina toont per
+onderdeel ✅ of ❌ met de oplossing erbij, test de verbinding met Google Agenda en heeft een knop **Stuur
+testmail**. Is alles groen? Boek dan zelf een afspraak, controleer de agenda en de bevestigingsmail, en annuleer via
+de link.
+
+**Tip: eerst in demo.** Met `NEXT_PUBLIC_BOOKING_MODE=demo` en een ingestelde e-maildienst werkt de boekingspagina
+al met **echte e-mails**, duidelijk gemarkeerd als **[TEST]**. Er komt dan niets in de agenda. Zo kan je de mails
+uitproberen voordat Google Agenda gekoppeld is.
 
 ### Dagelijks gebruik voor Aziz
 
@@ -165,9 +176,9 @@ Na het wijzigen van de stand op Vercel: opnieuw deployen.
   volume.
 - **Bescherming tegen misbruik:** een onzichtbaar lokveld houdt eenvoudige spambots tegen, en per IP-adres is het
   aantal pogingen beperkt. Komt er toch spam binnen, dan is Cloudflare Turnstile een eenvoudige uitbreiding.
-- **Testen:** `npm test` draait 17 automatische tests op de boekingslogica: tijdzones (zomer/winter), vrije
+- **Testen:** `npm test` draait 19 automatische tests op de boekingslogica: tijdzones (zomer/winter), vrije
   momenten, dubbele boekingen, annuleren, bedankmails, het agenda-bestand en de Google-koppeling met een
-  nagebootste Google-server. Lokaal uitproberen: `NEXT_PUBLIC_BOOKING_MODE=demo npm run dev`.
+  nagebootste Google-server, en het opbouwen van Gmail-mails. Lokaal uitproberen: `NEXT_PUBLIC_BOOKING_MODE=demo npm run dev`.
 
 ## Bronnen
 

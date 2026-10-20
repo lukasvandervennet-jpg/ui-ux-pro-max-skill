@@ -5,7 +5,7 @@ import { describe, it, mock } from "node:test";
 import { MemoryCalendar } from "./demo-calendar";
 import { GoogleCalendarClient } from "./google-calendar";
 import { buildIcs } from "./ics";
-import { MemoryMailer } from "./mailer";
+import { MemoryMailer, SmtpMailer, TestLabelMailer } from "./mailer";
 import { BookingError, cancelBooking, createBooking, getSlots, runFollowUps, type BookingDeps } from "./service";
 import { freeSlots, bookableDays, type SlotRules } from "./slots";
 import { formatLongDate, utcToZoned, zonedToUtc } from "./time";
@@ -309,5 +309,34 @@ describe("Google Agenda-koppeling (nagebootste Google-server)", () => {
     } finally {
       fetchMock.mock.restore();
     }
+  });
+});
+
+describe("e-mail via Gmail/SMTP", () => {
+  it("bouwt een correct bericht met onderwerp, afzender, antwoordadres en agenda-bijlage", async () => {
+    const smtp = new SmtpMailer({ jsonTransport: true }, "La Moustache <lamoustache@gmail.com>");
+    await smtp.send({
+      to: "jan@example.be",
+      subject: "Bevestigd: Fade",
+      html: "<p>Hallo</p>",
+      text: "Hallo",
+      replyTo: "aziz@example.be",
+      attachments: [{ filename: "afspraak.ics", content: Buffer.from("BEGIN:VCALENDAR").toString("base64"), contentType: "text/calendar" }],
+    });
+    const msg = JSON.parse(smtp.lastMessage!);
+    assert.equal(msg.subject, "Bevestigd: Fade");
+    assert.equal(msg.from.address, "lamoustache@gmail.com");
+    assert.equal(msg.to[0].address, "jan@example.be");
+    assert.equal(msg.replyTo[0].address, "aziz@example.be");
+    assert.equal(msg.attachments[0].filename, "afspraak.ics");
+    assert.equal(Buffer.from(msg.attachments[0].content, "base64").toString(), "BEGIN:VCALENDAR");
+  });
+
+  it("markeert mails in de demo-stand duidelijk als TEST", async () => {
+    const inner = new MemoryMailer();
+    await new TestLabelMailer(inner).send({ to: "a@b.be", subject: "Bevestigd", html: "<html><body><p>x</p></body></html>", text: "x" });
+    assert.equal(inner.sent[0].subject, "[TEST] Bevestigd");
+    assert.match(inner.sent[0].html, /<body><p[^>]*><strong>TEST<\/strong>/);
+    assert.match(inner.sent[0].text, /^TEST/);
   });
 });

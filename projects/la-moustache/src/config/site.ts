@@ -237,8 +237,15 @@ export const reviewSummary = {
 
 /* ── SEO ─────────────────────────────────────────────────────────────── */
 export const seo = {
-  /** Definitief domein. Stel in via NEXT_PUBLIC_SITE_URL op Vercel. */
-  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lamoustache-latem.be").replace(/\/$/, ""),
+  /**
+   * Adres van de website. Stel het definitieve domein in via NEXT_PUBLIC_SITE_URL op Vercel.
+   * Zolang dat ontbreekt, gebruikt Vercel automatisch het eigen .vercel.app-adres.
+   */
+  siteUrl: (
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "") ||
+    "https://www.lamoustache-latem.be"
+  ).replace(/\/$/, ""),
   title: "La Moustache Barbershop | Barbier & herenkapper in Sint-Martens-Latem",
   titleTemplate: "%s | La Moustache Barbershop",
   description:
