@@ -5,6 +5,7 @@ import type { CSSProperties, ReactNode } from "react";
 
 import { business } from "@/config/site";
 import { photos } from "@/config/photos";
+import { primaryCta } from "@/lib/links";
 import { groupedHours } from "@/lib/hours";
 
 type CSSVars = CSSProperties & Record<`--${string}`, string>;
@@ -68,7 +69,7 @@ export function Hero() {
             </p>
 
             <div className="mt-10 flex flex-col gap-3 xs:flex-row xs:flex-wrap">
-              <Link href="/#afspraak" className="btn btn-primary group">
+              <Link href={primaryCta} className="btn btn-primary group">
                 Maak een afspraak
                 <ArrowRight
                   className="size-4 transition-transform duration-500 group-hover:translate-x-1"

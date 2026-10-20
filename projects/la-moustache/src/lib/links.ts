@@ -1,3 +1,4 @@
+import { BOOKING_PATH, bookingMode } from "@/config/booking";
 import { business } from "@/config/site";
 
 const fullAddress = `${business.address.street}, ${business.address.postalCode} ${business.address.city}`;
@@ -21,3 +22,15 @@ export const links = {
 export function serviceMessage(serviceName: string) {
   return `Dag Aziz, ik zou graag een afspraak maken bij La Moustache voor: ${serviceName}. Wanneer heb je nog plaats?`;
 }
+
+/** Staat online boeken aan (NEXT_PUBLIC_BOOKING_MODE = "demo" of "live")? */
+export const onlineBooking = bookingMode !== "off";
+
+/** Boekingslink voor een dienst: eigen boekingspagina, anders een externe boekingslink, anders niets. */
+export function bookingHref(serviceId?: string): string | null {
+  if (onlineBooking) return serviceId ? `${BOOKING_PATH}?dienst=${encodeURIComponent(serviceId)}` : BOOKING_PATH;
+  return business.bookingUrl;
+}
+
+/** Doel van de algemene "Maak een afspraak"-knoppen. */
+export const primaryCta = onlineBooking ? BOOKING_PATH : "/#afspraak";

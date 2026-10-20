@@ -2,9 +2,11 @@
 
 import { AnimatePresence, m } from "framer-motion";
 import { Phone } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { links } from "@/lib/links";
+import { BOOKING_PATH } from "@/config/booking";
+import { links, onlineBooking } from "@/lib/links";
 import { WhatsAppIcon } from "./icons";
 
 /**
@@ -50,15 +52,21 @@ export function StickyBooking() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="flex gap-2 rounded-full border border-ivory/10 bg-ink/90 p-1.5 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.6)] backdrop-blur-xl">
-            <a
-              href={links.whatsapp()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary !min-h-12 flex-1 !px-4"
-            >
-              <WhatsAppIcon className="size-4" />
-              Maak een afspraak
-            </a>
+            {onlineBooking ? (
+              <Link href={BOOKING_PATH} className="btn btn-primary !min-h-12 flex-1 !px-4">
+                Maak een afspraak
+              </Link>
+            ) : (
+              <a
+                href={links.whatsapp()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary !min-h-12 flex-1 !px-4"
+              >
+                <WhatsAppIcon className="size-4" />
+                Maak een afspraak
+              </a>
+            )}
             <a
               href={links.tel}
               aria-label="Bel La Moustache"

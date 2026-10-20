@@ -47,6 +47,7 @@ Typecheck: `npm run lint`
 | Reviews (alleen geverifieerde worden getoond) | `src/config/site.ts` → `reviews`, `reviewSummary` |
 | Instagram en Facebook | `src/config/site.ts` → `social` |
 | Sponsor (STMNT) | `src/config/site.ts` → `sponsor` |
+| Online afspraken (duur, voorlooptijd, sluitingsdagen) | `src/config/booking.ts` |
 | SEO-titel, beschrijving, zoekwoorden | `src/config/site.ts` → `seo` |
 | Foto's en alt-teksten | `src/assets/photos/*` en `src/config/photos.ts` |
 
@@ -80,6 +81,94 @@ Typecheck: `npm run lint`
 | Desktop | 100 | 100 | 100 | 100 |
 | Mobiel (gesimuleerde trage 4G) | 87–93 | 100 | 100 | 100 |
 
+## Online afspraken
+
+Klanten boeken zelf een vrij moment op `/afspraak-maken`. Zo werkt het:
+
+1. **Kiezen.** De klant kiest een dienst, een dag en een vrij tijdstip. Vrije momenten zijn de openingsuren
+   (`src/config/site.ts`) min alles wat al in de Google Agenda van Aziz staat.
+2. **Boeken.** Het systeem controleert vlak voor het boeken opnieuw of het moment nog vrij is (geen dubbele
+   boekingen) en zet de afspraak meteen in zijn **Google Agenda**, met naam, telefoon en e-mail van de klant.
+3. **Bevestiging.** De klant krijgt een **bevestigingsmail** met datum, uur, adres, routebeschrijving, een
+   agenda-bestand (.ics) en een **annuleerlink**. Annuleert de klant, dan verdwijnt de afspraak uit de agenda en
+   komt het moment weer vrij.
+4. **Bedankmail.** Elke avond om ±21u stuurt het systeem een **bedankmail** naar wie die dag (of de dag ervoor) een
+   afspraak had, met een knop naar de Google Reviews. Klanten kunnen dat bij het boeken uitzetten. Iedereen krijgt
+   die mail hooguit één keer.
+
+Er is geen aparte database: de Google Agenda zelf is de databank. Elke afspraak bevat verborgen velden met de
+klantgegevens en of de bedankmail al verstuurd is.
+
+### Drie standen (`NEXT_PUBLIC_BOOKING_MODE`)
+
+| Stand | Wat er gebeurt |
+| --- | --- |
+| `off` (standaard) | Alles blijft zoals voorheen: de knoppen verwijzen naar WhatsApp. |
+| `demo` | De boekingspagina werkt volledig, maar afspraken blijven in het geheugen en e-mails worden niet verstuurd. Om te testen. |
+| `live` | Echte afspraken in Google Agenda en echte e-mails. Werkt pas als alle sleutels hieronder ingevuld zijn; anders zegt de pagina dat online boeken nog niet beschikbaar is. |
+
+Na het wijzigen van de stand op Vercel: opnieuw deployen.
+
+### Eenmalig instellen (± 30 minuten)
+
+**1. Google Agenda koppelen (gratis)**
+
+1. Ga naar [console.cloud.google.com](https://console.cloud.google.com), maak een project (bv. "La Moustache").
+2. Zoek **Google Calendar API** en klik op **Inschakelen**.
+3. Ga naar *IAM en beheer → Serviceaccounts → Serviceaccount maken* (naam bv. "boekingen"). Rollen zijn niet nodig.
+4. Open het serviceaccount → *Sleutels → Sleutel toevoegen → JSON*. Er wordt een bestand gedownload.
+5. Open in **Google Agenda** de instellingen van de agenda van de zaak → *Delen met specifieke personen* → voeg het
+   e-mailadres van het serviceaccount toe met **"Wijzigingen aanbrengen in afspraken"**.
+6. Noteer de **agenda-ID** (onder *Agenda integreren*; bij de hoofdagenda is dat het Gmail-adres).
+
+**2. E-mail instellen via [Resend](https://resend.com)** (gratis tot 3.000 mails per maand)
+
+1. Maak een account en voeg het domein van de website toe. Kies als regio **Ierland (eu-west-1)**.
+2. Zet de DNS-records die Resend toont bij de domeinregistrar (nodig zodat mails niet in spam belanden).
+3. Maak een **API-sleutel** aan.
+
+**3. Op Vercel invullen** (*Project → Settings → Environment Variables*). Zie ook `.env.example`.
+
+| Variabele | Waarde |
+| --- | --- |
+| `NEXT_PUBLIC_BOOKING_MODE` | `live` |
+| `GOOGLE_SERVICE_ACCOUNT_EMAIL` | `client_email` uit het JSON-bestand |
+| `GOOGLE_PRIVATE_KEY` | `private_key` uit het JSON-bestand (volledig, met `-----BEGIN…`) |
+| `GOOGLE_CALENDAR_ID` | de agenda-ID uit stap 1.6 |
+| `RESEND_API_KEY` | de sleutel uit stap 2.3 |
+| `MAIL_FROM` | bv. `La Moustache <afspraken@domein.be>` (adres op het geverifieerde domein) |
+| `MAIL_REPLY_TO` | het adres waarop klanten mogen antwoorden |
+| `BOOKING_SECRET` | een lange willekeurige tekst (beveiligt de annuleerlinks) |
+| `CRON_SECRET` | een lange willekeurige tekst (beveiligt de dagelijkse bedankmail-taak) |
+| `BOOKING_NOTIFY_EMAIL` | optioneel: Aziz krijgt ook een mail bij elke boeking of annulering |
+
+**4. Deployen.** De dagelijkse bedankmail staat al ingepland in `vercel.json` (19:15 UTC = 20:15 of 21:15 in België).
+
+**5. Testen.** Boek zelf een afspraak, controleer de agenda en de bevestigingsmail, en annuleer via de link.
+
+### Dagelijks gebruik voor Aziz
+
+- **Nieuwe afspraken** verschijnen vanzelf in zijn Google Agenda, met een melding op zijn telefoon zoals elke
+  andere afspraak. Titel: `Dienst · Naam klant`, met telefoon en e-mail in de beschrijving.
+- **Een moment blokkeren** (pauze, privé): zet een afspraak in de agenda. Alles wat als "Bezet" staat, kan niet
+  geboekt worden. Let op: een afspraak voor een **hele dag** staat in Google Agenda standaard op "Beschikbaar"; zet
+  die op **"Bezet"**, of voeg de datum toe aan `closedDates` in `src/config/booking.ts`.
+- **Zelf een afspraak verplaatsen of schrappen** in de agenda kan gewoon, maar dan krijgt de klant **geen**
+  automatische mail. Verwittig de klant dus zelf (telefoon of WhatsApp).
+- **Boekingsregels** (duur per dienst, om de hoeveel minuten, minimaal 2 uur op voorhand, tot 6 weken vooruit)
+  staan in `src/config/booking.ts`. **De duur per dienst (nu overal 30 min) moet Aziz nog bevestigen.**
+
+### Goed om te weten
+
+- **Vercel-abonnement:** het gratis Hobby-plan van Vercel is bedoeld voor niet-commerciële projecten. Voor een
+  zaak is het **Pro-plan** (± $20 per maand) de juiste keuze. Google Agenda-koppeling en Resend zijn gratis bij dit
+  volume.
+- **Bescherming tegen misbruik:** een onzichtbaar lokveld houdt eenvoudige spambots tegen, en per IP-adres is het
+  aantal pogingen beperkt. Komt er toch spam binnen, dan is Cloudflare Turnstile een eenvoudige uitbreiding.
+- **Testen:** `npm test` draait 17 automatische tests op de boekingslogica: tijdzones (zomer/winter), vrije
+  momenten, dubbele boekingen, annuleren, bedankmails, het agenda-bestand en de Google-koppeling met een
+  nagebootste Google-server. Lokaal uitproberen: `NEXT_PUBLIC_BOOKING_MODE=demo npm run dev`.
+
 ## Bronnen
 
 | Bron | Gebruikt voor |
@@ -104,7 +193,7 @@ Facebook live. Daarom staan er nog geen reviews, prijzen of beoordelingsaantalle
 7. **Directe link naar de Facebookpagina:** nu staat er een zoeklink.
 8. **Wettelijke gegevens (verplicht in België):** juridische naam van de onderneming en het ondernemingsnummer (KBO/btw).
 9. **Domeinnaam:** de placeholder `lamoustache-latem.be` in `seo.siteUrl` moet vervangen worden.
-10. **Online boekingssysteem:** is er een? Zo ja, de link.
+10. **Online afspraken:** de duur per dienst bevestigen en de koppeling instellen (zie "Online afspraken").
 11. **Origineel logobestand** (SVG, AI of PDF). Het huidige beeldmerk is een vectorreconstructie op basis van het
     profielbeeld. Het woordmerk is gezet in het lettertype Allura, als benadering van het handgeschreven logo.
 12. **Originele foto's** in hoge resolutie. De huidige beelden zijn uitgesneden uit screenshots van Instagram- en

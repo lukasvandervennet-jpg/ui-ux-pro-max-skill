@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { business, navigation, social } from "@/config/site";
 import { groupedHours } from "@/lib/hours";
-import { links } from "@/lib/links";
+import { links, primaryCta } from "@/lib/links";
 import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "./icons";
 import { Logo } from "./Logo";
 import { SponsorBadge } from "./Sponsor";
@@ -26,7 +26,7 @@ export function Footer() {
           </div>
           <div className="flex flex-col items-start gap-4 lg:items-end">
             <SponsorBadge tone="dark" />
-            <Link href="/#afspraak" className="btn btn-primary">
+            <Link href={primaryCta} className="btn btn-primary">
               Maak een afspraak
             </Link>
           </div>

@@ -1,8 +1,10 @@
 import { CalendarCheck, Phone } from "lucide-react";
+import Link from "next/link";
 
+import { BOOKING_PATH } from "@/config/booking";
 import { business, openingHours } from "@/config/site";
 import { formatRange } from "@/lib/hours";
-import { links } from "@/lib/links";
+import { links, onlineBooking } from "@/lib/links";
 import { WhatsAppIcon } from "./icons";
 import { MoustacheMark } from "./Logo";
 import { LineReveal, Reveal } from "./motion";
@@ -44,22 +46,30 @@ export function Booking() {
                 <LineReveal delay={0.08}>starts here.</LineReveal>
               </h2>
               <p className="mt-8 max-w-md text-[1.0625rem] leading-relaxed text-ink/75">
-                La Moustache werkt enkel op afspraak. Stuur Aziz een berichtje via WhatsApp of bel even, en jullie
-                spreken samen een moment af dat past.
+                {onlineBooking
+                  ? "La Moustache werkt enkel op afspraak. Kies online een vrij moment en je krijgt meteen een bevestiging per e-mail. Liever persoonlijk? Stuur Aziz een berichtje of bel even."
+                  : "La Moustache werkt enkel op afspraak. Stuur Aziz een berichtje via WhatsApp of bel even, en jullie spreken samen een moment af dat past."}
               </p>
 
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                {business.bookingUrl && (
-                  <a href={business.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-dark">
+                {onlineBooking ? (
+                  <Link href={BOOKING_PATH} className="btn btn-dark">
                     <CalendarCheck className="size-4" aria-hidden="true" strokeWidth={1.6} />
-                    Online boeken
-                  </a>
+                    Online afspraak maken
+                  </Link>
+                ) : (
+                  business.bookingUrl && (
+                    <a href={business.bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-dark">
+                      <CalendarCheck className="size-4" aria-hidden="true" strokeWidth={1.6} />
+                      Online boeken
+                    </a>
+                  )
                 )}
                 <a
                   href={links.whatsapp()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={business.bookingUrl ? "btn btn-outline-dark" : "btn btn-dark"}
+                  className={onlineBooking || business.bookingUrl ? "btn btn-outline-dark" : "btn btn-dark"}
                 >
                   <WhatsAppIcon className="size-4" />
                   Afspraak via WhatsApp

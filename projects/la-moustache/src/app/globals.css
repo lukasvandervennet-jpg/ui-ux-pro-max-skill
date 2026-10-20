@@ -179,6 +179,27 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
+  /* Eigen selectievakje: overal hetzelfde, ook op telefoons */
+  .lm-check {
+    appearance: none;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 1px solid color-mix(in oklab, var(--color-ink) 40%, transparent);
+    background: #fff center / 0.85rem no-repeat;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  .lm-check:checked {
+    background-color: var(--color-ink);
+    border-color: var(--color-ink);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5f1e9' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  }
+  .lm-check[aria-invalid="true"] {
+    border-color: #9b2c1f;
+  }
+
   .no-scrollbar {
     scrollbar-width: none;
   }

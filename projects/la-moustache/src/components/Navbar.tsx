@@ -7,7 +7,8 @@ import { useEffect, useRef, useState } from "react";
 
 import { business, navigation, social } from "@/config/site";
 import { cn } from "@/lib/cn";
-import { links } from "@/lib/links";
+import { BOOKING_PATH } from "@/config/booking";
+import { links, onlineBooking, primaryCta } from "@/lib/links";
 import { InstagramIcon, WhatsAppIcon } from "./icons";
 import { Logo } from "./Logo";
 
@@ -16,7 +17,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function Navbar({ solid = false }: { solid?: boolean }) {
   const [scrolled, setScrolled] = useState(solid);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("top");
+  const [active, setActive] = useState<string>(solid ? "" : "top");
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -132,7 +133,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
               <Phone className="size-4 text-gold" aria-hidden="true" strokeWidth={1.6} />
               {business.phone.local}
             </a>
-            <Link href="/#afspraak" className="btn btn-primary hidden !min-h-11 !px-5 !text-[0.6875rem] sm:inline-flex">
+            <Link href={primaryCta} className="btn btn-primary hidden !min-h-11 !px-5 !text-[0.6875rem] sm:inline-flex">
               Maak een afspraak
             </Link>
             <button
@@ -194,14 +195,27 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
                 <div className="flex flex-col gap-3 xs:flex-row">
-                  <a href={links.whatsapp()} target="_blank" rel="noopener noreferrer" className="btn btn-primary flex-1">
-                    <WhatsAppIcon className="size-4" />
-                    Afspraak via WhatsApp
-                  </a>
-                  <a href={links.tel} className="btn btn-ghost flex-1">
-                    <Phone className="size-4" aria-hidden="true" strokeWidth={1.6} />
-                    Bellen
-                  </a>
+                  {onlineBooking ? (
+                    <Link href={BOOKING_PATH} onClick={() => setOpen(false)} className="btn btn-primary flex-1">
+                      Online afspraak maken
+                    </Link>
+                  ) : (
+                    <a href={links.whatsapp()} target="_blank" rel="noopener noreferrer" className="btn btn-primary flex-1">
+                      <WhatsAppIcon className="size-4" />
+                      Afspraak via WhatsApp
+                    </a>
+                  )}
+                  {onlineBooking ? (
+                    <a href={links.whatsapp()} target="_blank" rel="noopener noreferrer" className="btn btn-ghost flex-1">
+                      <WhatsAppIcon className="size-4" />
+                      WhatsApp
+                    </a>
+                  ) : (
+                    <a href={links.tel} className="btn btn-ghost flex-1">
+                      <Phone className="size-4" aria-hidden="true" strokeWidth={1.6} />
+                      Bellen
+                    </a>
+                  )}
                 </div>
                 <div className="flex items-center justify-between text-sm text-ivory/60">
                   <span>{business.address.streetShort}, Latem</span>

@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 
 import { business, services } from "@/config/site";
-import { links, serviceMessage } from "@/lib/links";
+import { bookingHref, links, onlineBooking, serviceMessage } from "@/lib/links";
 import { Reveal, RevealItem } from "./motion";
 import { SectionHeading } from "./SectionHeading";
 
@@ -28,7 +28,8 @@ export function Services() {
 
         <ol className="mt-10 border-t border-ivory/12 lg:mt-24">
           {visible.map((s, i) => {
-            const href = business.bookingUrl ?? links.whatsapp(serviceMessage(s.titleNl));
+            const href = bookingHref(s.id) ?? links.whatsapp(serviceMessage(s.titleNl));
+            const external = !onlineBooking;
             return (
               <RevealItem
                 key={s.id}
@@ -52,10 +53,9 @@ export function Services() {
                     <span className="text-[0.8125rem] text-ivory/50">{priceLabel(s.price, s.duration)}</span>
                     <a
                       href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       className="inline-flex min-h-11 items-center gap-2 rounded-full border border-ivory/20 px-5 text-[0.6875rem] font-bold uppercase tracking-[0.2em] text-ivory transition-colors duration-500 hover:border-gold hover:bg-gold hover:text-ink"
-                      aria-label={`Afspraak maken voor ${s.titleNl} (${business.bookingUrl ? "online boeken" : "opent WhatsApp"})`}
+                      aria-label={`Afspraak maken voor ${s.titleNl}${onlineBooking ? "" : business.bookingUrl ? " (online boeken)" : " (opent WhatsApp)"}`}
                     >
                       Afspraak
                       <ArrowUpRight className="size-4" aria-hidden="true" strokeWidth={1.8} />
