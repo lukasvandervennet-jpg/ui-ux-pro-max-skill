@@ -85,8 +85,9 @@ Typecheck: `npm run lint`
 | Bron | Gebruikt voor |
 | --- | --- |
 | Instagram [@la_moustache_latem](https://www.instagram.com/la_moustache_latem/) (screenshots van de klant) | Naam eigenaar, openingsuren, "enkel op afspraak", telefoon, adres, foto's |
+| Instagramposts van 27 februari en 3 april 2025 (screenshots van de klant) | Letterlijke citaten in "Over ons" en "De ervaring" |
 | Facebookpagina "La moustache Latem" (screenshots van de klant) | Adres met postcode, telefoon, e-mailadres (nog niet getoond), cover- en logobeeld |
-| [Het Nieuwsblad, 21 februari 2025](https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/eeklo/kapper-aziz-32-realiseert-in-latem-zijn-grote-droom-idee-is-ontstaan-op-een-tuktuk-in-thailand/42678205.html) | Opening in 2025 en het idee "ontstaan op een tuktuk in Thailand" (enkel de kop; de artikeltekst zelf was niet bereikbaar en is niet overgenomen) |
+| [Het Nieuwsblad, 21 februari 2025](https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/eeklo/kapper-aziz-32-realiseert-in-latem-zijn-grote-droom-idee-is-ontstaan-op-een-tuktuk-in-thailand/42678205.html) | Opening in 2025 en het idee "ontstaan op een tuktuk in Thailand" (enkel de kop, overgenomen uit de link en op de site getoond als persvermelding met bron; de artikeltekst zelf was niet bereikbaar en is niet gebruikt) |
 | [Goudengids / Golden Pages](https://www.goldenpages.be/companies/Sint-Martens-Latem/hairdressing+salons+-+gentlemen/) | Bevestiging van de volledige straatnaam "Karel Lodewijk Maenhoutstraat 45". De telefoonnummers op die vermelding wijken af en zijn **niet** gebruikt. |
 
 Niet bereikbaar vanuit de bouwomgeving: Google Maps / Google Bedrijfsprofiel, Google Reviews, Instagram en

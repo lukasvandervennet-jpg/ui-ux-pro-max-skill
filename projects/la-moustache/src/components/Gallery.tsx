@@ -24,8 +24,8 @@ export function Gallery() {
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-8">
           <SectionHeading index="03" label="Gallery" title={["Our", "work."]} tone="light" className="lg:col-span-7" id="gallery-title" />
           <Reveal className="max-w-md text-[1.0625rem] leading-relaxed text-ink/70 lg:col-span-5 lg:justify-self-end">
-            Fades, krullen, klassieke snitten en styling — rechtstreeks uit de stoel bij La Moustache. Klik op een
-            beeld om het groter te bekijken.
+            Fades, krullen en styling, rechtstreeks uit de stoel bij La Moustache. Alle foto's komen van het eigen
+            Instagramaccount. Klik op een beeld om het groter te bekijken.
           </Reveal>
         </div>
 

@@ -21,8 +21,8 @@ export function Services() {
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
           <SectionHeading index="02" label="Services" title={["The", "services."]} className="lg:col-span-7" id="services-title" />
           <Reveal className="max-w-md text-[1.0625rem] leading-relaxed text-ivory/70 lg:col-span-5 lg:justify-self-end">
-            Elke behandeling begint met een kort gesprek over wat je wil. Kies hieronder wat je zoekt en stuur
-            meteen een bericht om een moment vast te leggen.
+            Van een strakke fade tot krullen in vorm: dit is het werk dat je terugziet op Instagram. Kies wat je
+            zoekt en stuur Aziz meteen een bericht voor een afspraak.
           </Reveal>
         </div>
 
@@ -67,7 +67,7 @@ export function Services() {
         </ol>
 
         <Reveal className="mt-8 flex flex-col gap-2 text-sm text-ivory/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>Twijfel je wat je nodig hebt? Vraag het gewoon — Aziz denkt graag mee.</p>
+          <p>Twijfel je wat je nodig hebt? Stel je vraag via WhatsApp of bel even.</p>
           <a href={links.tel} className="link-underline self-start text-ivory/80 sm:self-auto">
             Bel {business.phone.local}
           </a>

@@ -136,7 +136,7 @@ export const services: Service[] = [
     title: "Men’s Haircut",
     titleNl: "Herenknipbeurt",
     description:
-      "Een snit die past bij je haar, je gezicht en je dag. We overlopen eerst wat je wil, daarna nemen we de tijd om het juist te doen.",
+      "Een herensnit op maat van je haar, met schaar en tondeuse.",
     price: null,
     duration: null,
     published: true,
@@ -146,7 +146,7 @@ export const services: Service[] = [
     title: "Fade",
     titleNl: "Fade & skin fade",
     description:
-      "Van low tot skin: een vloeiende overgang zonder harde lijnen, strak uitgewerkt rond oren en nek.",
+      "Een vloeiende overgang van kort naar lang, van low fade tot skin fade.",
     price: null,
     duration: null,
     published: true,
@@ -156,7 +156,7 @@ export const services: Service[] = [
     title: "Styling",
     titleNl: "Krullen & styling",
     description:
-      "Krullen, textuur of een strakke look: gevormd, gestyled en afgewerkt met STMNT-producten, zodat je weet hoe je het thuis houdt.",
+      "Krullen en textuur in vorm gebracht en afgewerkt met producten van STMNT Grooming Goods.",
     price: null,
     duration: null,
     published: true,
@@ -166,7 +166,7 @@ export const services: Service[] = [
     title: "Kids Haircut",
     titleNl: "Kinderknipbeurt",
     description:
-      "Rustig, geduldig en met dezelfde zorg. Voor de jongste klanten die er ook sharp willen uitzien.",
+      "Ook de jongste klanten nemen plaats in de stoel.",
     price: null,
     duration: null,
     published: true,
@@ -262,7 +262,9 @@ export const press = {
   nieuwsblad: {
     outlet: "Het Nieuwsblad",
     date: "2025-02-21",
-    title: "Kapper Aziz realiseert in Latem zijn grote droom",
+    // Kop van het artikel, overgenomen uit de link (het artikel zelf zit achter een betaalmuur)
+    title: "Kapper Aziz (32) realiseert in Latem zijn grote droom",
+    subtitle: "Idee is ontstaan op een tuktuk in Thailand",
     url: "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/eeklo/kapper-aziz-32-realiseert-in-latem-zijn-grote-droom-idee-is-ontstaan-op-een-tuktuk-in-thailand/42678205.html",
   },
 } as const;

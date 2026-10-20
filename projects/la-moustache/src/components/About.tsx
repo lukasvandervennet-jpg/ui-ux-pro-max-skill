@@ -10,7 +10,7 @@ import { SponsorBadge } from "./Sponsor";
 const facts = [
   { value: String(business.founded), label: "Geopend in Latem" },
   { value: "Nº 45", label: "Maenhoutstraat" },
-  { value: "1 op 1", label: "Enkel op afspraak" },
+  { value: "Di–Za", label: "Enkel op afspraak" },
 ];
 
 export function About() {
@@ -39,27 +39,22 @@ export function About() {
         <div className="order-1 lg:order-none lg:col-span-6 lg:col-start-7 lg:pt-6">
           <SectionHeading index="01" label="Over ons" title={["More than", "a haircut."]} tone="light" id="about-title" />
 
-          <Reveal className="mt-8 max-w-[34rem] space-y-5 text-[1.0625rem] leading-[1.7] text-ink/80 sm:mt-10">
+          <Reveal className="mt-8 max-w-[34rem] text-[1.0625rem] leading-[1.7] text-ink/80 sm:mt-10">
             <p>
-              <span className="font-display text-[1.6rem] leading-none text-ink">La Moustache</span> is de zaak van{" "}
-              {business.owner}. Het idee voor een eigen barbershop ontstond ver van huis, op een tuktuk in Thailand. In{" "}
-              {business.founded} werd die droom werkelijkheid, hier in Sint-Martens-Latem.
-            </p>
-            <p>
-              Omdat La Moustache enkel op afspraak werkt, is er tijd: om te luisteren, je haar te lezen en af te werken
-              tot elke lijn klopt. Geen haast, geen standaardwerk — van een vloeiende fade tot krullen die eindelijk doen
-              wat ze moeten doen.
+              <span className="font-display text-[1.6rem] leading-none text-ink">La Moustache</span> is de barbershop van{" "}
+              {business.owner}, sinds {business.founded} aan de {business.address.street} in {business.address.city}. Zijn
+              eigen woorden zeggen het best:
             </p>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <figure className="mt-8 border-l-2 border-bronze/50 pl-5">
-              <blockquote className="font-display text-[1.45rem] italic leading-snug text-ink sm:text-[1.65rem]">
+            <figure className="mt-7 max-w-[34rem] border-l-2 border-bronze/50 pl-5 sm:pl-6">
+              <blockquote className="font-display text-[1.6rem] italic leading-[1.25] text-ink sm:text-[1.9rem]">
                 “Dromen beginnen klein, maar groeien met passie en doorzettingsvermogen. Vandaag sta ik hier, in mijn
                 eigen barbershop…”
               </blockquote>
               <figcaption className="mt-3 text-[0.8125rem] text-stone">
-                {business.owner}, op Instagram · april 2025
+                {business.owner} op Instagram, 3 april 2025
               </figcaption>
             </figure>
           </Reveal>
@@ -69,16 +64,30 @@ export function About() {
               href={press.nieuwsblad.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-8 inline-flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-ink/20 pb-1 text-sm font-medium text-ink transition-colors hover:border-ink"
+              className="group mt-8 block max-w-[34rem] border border-ink/15 p-5 transition-colors duration-500 hover:border-ink/40 sm:p-6"
             >
-              Lees het verhaal in {press.nieuwsblad.outlet}
-              <span className="text-stone">· 21 februari 2025</span>
-              <ArrowUpRight
-                className="size-4 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                aria-hidden="true"
-                strokeWidth={1.6}
-              />
+              <span className="eyebrow flex items-center justify-between gap-4 text-stone">
+                In de pers · {press.nieuwsblad.outlet}, 21 februari 2025
+                <ArrowUpRight
+                  className="size-4 shrink-0 text-ink/40 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
+                  aria-hidden="true"
+                  strokeWidth={1.6}
+                />
+              </span>
+              <span className="mt-3 block font-display text-[1.35rem] leading-snug text-ink sm:text-[1.5rem]">
+                {press.nieuwsblad.title}
+              </span>
+              <span className="mt-1 block font-display text-[1.2rem] italic leading-snug text-ink/70 sm:text-[1.3rem]">
+                “{press.nieuwsblad.subtitle}”
+              </span>
             </a>
+          </Reveal>
+
+          <Reveal delay={0.1} className="mt-8 max-w-[34rem] text-[1.0625rem] leading-[1.7] text-ink/80">
+            <p>
+              Je komt er enkel op afspraak, van dinsdag tot zaterdag. Binnen wachten veel daglicht, groene fluwelen
+              stoelen en het logo in neon op een muur van groen.
+            </p>
           </Reveal>
 
           <Reveal delay={0.15} className="mt-8">

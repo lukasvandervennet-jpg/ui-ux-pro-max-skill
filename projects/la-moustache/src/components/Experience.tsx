@@ -4,23 +4,12 @@ import { photos } from "@/config/photos";
 import { ImageReveal, Reveal, RevealItem } from "./motion";
 import { SectionHeading } from "./SectionHeading";
 
+/** Vier dingen die je ziet als je binnenstapt — allemaal te zien op de foto's van de zaak. */
 const pillars = [
-  {
-    title: "Rust",
-    text: "Een lichte zaak met een groot raam, zachte fauteuils en groen. Geen drukte, geen wachtrij.",
-  },
-  {
-    title: "Aandacht",
-    text: "Enkel op afspraak, dus dit moment is van jou. Eerst praten, dan pas knippen.",
-  },
-  {
-    title: "Precisie",
-    text: "Overgangen, lijnen en contouren — tot in het kleinste detail uitgewerkt.",
-  },
-  {
-    title: "Afwerking",
-    text: "Gestyled en verzorgd. Je stapt pas buiten wanneer alles klopt.",
-  },
+  { title: "Daglicht", text: "Een groot raam laat het licht binnen, tot aan de wasstoelen." },
+  { title: "Op afspraak", text: "Geen wachtrij: je komt op een vast moment, van dinsdag tot zaterdag." },
+  { title: "De neonmuur", text: "Een muur van groen met het La Moustache-logo in neon." },
+  { title: "STMNT", text: "Gesponsord door STMNT Grooming Goods, met hun producten in de rekken." },
 ];
 
 export function Experience() {
@@ -36,9 +25,11 @@ export function Experience() {
             size="md"
             id="experience-title"
           />
-          <Reveal className="mt-6 max-w-lg text-[1.0625rem] leading-relaxed text-ink/75 sm:mt-8">
-            Een bezoek aan La Moustache is tijd voor jezelf. Je wordt ontvangen, er wordt geluisterd en er wordt met
-            aandacht gewerkt, in een lichte zaak die eerder aanvoelt als een woonkamer dan als een salon.
+          <Reveal className="mt-6 max-w-lg sm:mt-8">
+            <p className="font-display text-[1.45rem] italic leading-snug text-ink sm:text-[1.7rem]">
+              “A fresh cut is more than just a look — it’s a feeling. Step in, step out, feeling like a king.”
+            </p>
+            <p className="mt-3 text-[0.8125rem] not-italic text-stone">La Moustache op Instagram, 27 februari 2025</p>
           </Reveal>
 
           <ol className="mt-8 hidden grid-cols-2 gap-px overflow-hidden border border-ink/10 bg-ink/10 sm:mt-10 lg:grid">

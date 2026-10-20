@@ -52,7 +52,7 @@ export function Reviews() {
             <div className="flex flex-col justify-end gap-6 lg:col-span-4 lg:col-start-9">
               <p className="text-[0.975rem] leading-relaxed text-ivory/65">
                 Op deze website verschijnen enkel echte reviews, letterlijk overgenomen van Google. Ook langs geweest?
-                Een paar woorden op Google helpen Aziz enorm.
+                Laat gerust een review achter op Google.
               </p>
               <div className="flex flex-col gap-3 xs:flex-row">
                 <a href={links.googleReviews} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
