@@ -19,7 +19,7 @@ export function About() {
       <div className="container-luxe grid gap-10 lg:grid-cols-12 lg:gap-10">
         {/* Beeld: op mobiel onder de tekst */}
         <div className="order-2 lg:order-none lg:col-span-5 lg:self-start">
-          <ImageReveal className="relative mx-auto aspect-square w-full max-w-[26rem] overflow-hidden rounded-[2px] bg-ivory-deep sm:aspect-[4/5] lg:mx-0">
+          <ImageReveal className="relative mx-auto aspect-[4/5] w-full max-w-[26rem] overflow-hidden rounded-[2px] bg-ivory-deep lg:mx-0">
             <Image
               src={photos.azizPortrait.src}
               alt={photos.azizPortrait.alt}
@@ -49,7 +49,7 @@ export function About() {
 
           <Reveal delay={0.05}>
             <figure className="mt-7 max-w-[34rem] border-l-2 border-bronze/50 pl-5 sm:pl-6">
-              <blockquote className="font-display text-[1.6rem] italic leading-[1.25] text-ink sm:text-[1.9rem]">
+              <blockquote className="font-display text-[1.4rem] italic leading-[1.3] text-ink sm:text-[1.65rem]">
                 “Dromen beginnen klein, maar groeien met passie en doorzettingsvermogen. Vandaag sta ik hier, in mijn
                 eigen barbershop…”
               </blockquote>
@@ -103,7 +103,7 @@ export function About() {
               >
                 <dt className="sr-only">{f.label}</dt>
                 <dd>
-                  <span className="block font-display text-[1.9rem] font-medium leading-none text-ink sm:text-[2.6rem]">{f.value}</span>
+                  <span className="block font-display text-[1.65rem] font-medium leading-none text-ink sm:text-[2.2rem]">{f.value}</span>
                   <span className="mt-2 block text-[0.75rem] leading-snug text-stone sm:mt-3 sm:text-[0.8125rem]">{f.label}</span>
                 </dd>
               </Reveal>

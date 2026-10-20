@@ -41,7 +41,7 @@ export function Services() {
                   </span>
 
                   <div>
-                    <h3 className="display text-[clamp(1.75rem,4.2vw,3.25rem)] text-ivory">{s.title}</h3>
+                    <h3 className="display text-[clamp(1.5rem,3.2vw,2.5rem)] text-ivory">{s.title}</h3>
                     <p className="eyebrow mt-2 text-gold/90 sm:mt-3">{s.titleNl}</p>
                   </div>
 

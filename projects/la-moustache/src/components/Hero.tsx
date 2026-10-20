@@ -24,9 +24,9 @@ export function Hero() {
   const hours = groupedHours().filter((g) => !g.closed);
 
   return (
-    <section id="top" aria-labelledby="hero-title" className="grain relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ink">
-      {/* Beeld: volledig scherm op mobiel, redactioneel paneel rechts op desktop */}
-      <div className="intro-settle absolute inset-0 -z-10 lg:left-auto lg:w-[46%]">
+    <section id="top" aria-labelledby="hero-title" className="grain relative isolate flex flex-col overflow-hidden bg-ink lg:min-h-[100svh]">
+      {/* Beeld: bovenaan in de volle breedte op mobiel (tekst eronder), redactioneel paneel rechts op desktop */}
+      <div className="intro-settle relative h-[52svh] min-h-[22rem] lg:absolute lg:inset-y-0 lg:right-0 lg:-z-10 lg:h-auto lg:min-h-0 lg:w-[46%]">
         <Image
           src={photos.interior.src}
           alt={photos.interior.alt}
@@ -36,22 +36,22 @@ export function Hero() {
           placeholder="blur"
           quality={85}
           sizes="(min-width: 1024px) 46vw, 100vw"
-          className="object-cover object-[68%_40%]"
+          className="object-cover object-[60%_30%]"
         />
         {/* Leesbaarheid */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/75 to-ink/35 lg:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-transparent via-30% to-ink lg:hidden" />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-ink via-ink/10 to-transparent lg:block" />
         <div className="absolute inset-x-0 bottom-0 hidden h-40 bg-gradient-to-t from-ink/90 to-transparent lg:block" />
       </div>
 
-      <div className="container-luxe flex flex-1 flex-col justify-end pb-10 pt-32 lg:justify-center lg:pb-28 lg:pt-36">
+      <div className="container-luxe relative -mt-16 flex flex-1 flex-col pb-10 lg:mt-0 lg:justify-center lg:pb-28 lg:pt-36">
         <div className="max-w-[46rem] lg:max-w-[52%]">
           <p className="intro-fade eyebrow flex items-center gap-3 text-gold" style={{ "--d": "0.1s" } as CSSVars}>
             <span aria-hidden="true" className="h-px w-10 bg-gold/70" />
             Barbershop · Sint-Martens-Latem
           </p>
 
-          <h1 id="hero-title" className="display mt-7 text-[clamp(3rem,12vw,5.25rem)] text-ivory lg:text-[clamp(4.75rem,6.6vw,7rem)]">
+          <h1 id="hero-title" className="display mt-6 text-[clamp(2.6rem,10.5vw,4.25rem)] text-ivory lg:mt-7 lg:text-[clamp(4rem,5.4vw,5.75rem)]">
             <Line delay="0.1s">The art of</Line>
             <Line delay="0.18s">
               a <em className="font-normal italic text-gold-light">perfect</em>
@@ -60,7 +60,7 @@ export function Hero() {
           </h1>
 
           <div className="intro-fade-up" style={{ "--d": "0.3s" } as CSSVars}>
-            <p className="mt-7 font-display text-[1.6rem] italic leading-none text-ivory/90 sm:text-[1.9rem]">
+            <p className="mt-6 font-display text-[1.4rem] italic leading-none text-ivory/90 sm:text-[1.65rem]">
               Precision. Style. Confidence.
             </p>
             <p className="mt-6 max-w-[30rem] text-[1.0625rem] leading-relaxed text-ivory/75">

@@ -41,7 +41,7 @@ export function Booking() {
                 <span aria-hidden="true" className="h-px w-8 bg-current opacity-60" />
                 Afspraak
               </p>
-              <h2 id="booking-title" className="display mt-6 text-[clamp(2.6rem,5.2vw,4.25rem)] text-ink">
+              <h2 id="booking-title" className="display mt-6 text-[clamp(2.15rem,4.4vw,3.5rem)] text-ink">
                 <LineReveal>Your next cut</LineReveal>
                 <LineReveal delay={0.08}>starts here.</LineReveal>
               </h2>

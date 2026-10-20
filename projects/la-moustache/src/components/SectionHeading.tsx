@@ -31,7 +31,7 @@ export function SectionHeading({
         id={id}
         className={cn(
           "display mt-4 sm:mt-6",
-          size === "lg" ? "text-[clamp(2.5rem,7vw,6rem)]" : "text-[clamp(2.5rem,5vw,4.5rem)]",
+          size === "lg" ? "text-[clamp(2.15rem,5.6vw,4.75rem)]" : "text-[clamp(2.15rem,4.2vw,3.75rem)]",
           tone === "dark" ? "text-ivory" : "text-ink",
         )}
       >

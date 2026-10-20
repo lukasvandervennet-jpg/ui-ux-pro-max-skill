@@ -39,7 +39,7 @@ export function Experience() {
           </ol>
         </div>
 
-        <ImageReveal className="relative aspect-[5/4] w-full overflow-hidden lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:aspect-[4/5]">
+        <ImageReveal className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/4] lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:aspect-[4/5]">
           <Image
             src={photos.neon.src}
             alt={photos.neon.alt}

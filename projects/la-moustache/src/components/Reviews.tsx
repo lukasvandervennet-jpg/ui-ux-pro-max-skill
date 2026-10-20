@@ -45,7 +45,7 @@ export function Reviews() {
           <ReviewSlider reviews={verified} />
         ) : (
           <Reveal className="mt-10 grid gap-8 border-t border-ivory/12 pt-8 lg:mt-24 lg:grid-cols-12 lg:gap-10 lg:pt-16">
-            <p className="font-display text-[clamp(1.75rem,3.4vw,2.75rem)] leading-[1.15] text-ivory lg:col-span-7">
+            <p className="font-display text-[clamp(1.5rem,2.8vw,2.25rem)] leading-[1.2] text-ivory lg:col-span-7">
               Wat klanten over La Moustache zeggen, lees je het best bij de bron:{" "}
               <em className="italic text-gold-light">ongefilterd, in hun eigen woorden.</em>
             </p>

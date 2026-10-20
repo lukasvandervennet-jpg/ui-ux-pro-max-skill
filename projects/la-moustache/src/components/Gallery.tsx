@@ -77,7 +77,7 @@ export function Gallery() {
                   />
                 </span>
                 <span>
-                  <span className="display block text-[1.35rem] xs:text-[1.5rem] sm:text-[clamp(1.6rem,3vw,2.6rem)]">More on Instagram</span>
+                  <span className="display block text-[1.3rem] xs:text-[1.4rem] sm:text-[clamp(1.5rem,2.4vw,2.1rem)]">More on Instagram</span>
                   <span className="mt-2 block text-[0.6875rem] text-ivory/60 sm:text-[0.8125rem]">{social.instagram.handle}</span>
                 </span>
               </a>

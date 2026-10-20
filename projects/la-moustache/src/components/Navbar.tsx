@@ -180,7 +180,7 @@ export function Navbar({ solid = false }: { solid?: boolean }) {
                       className="group flex items-baseline gap-4 py-2"
                     >
                       <span className="eyebrow w-6 text-gold/80 tabular-nums">0{i + 1}</span>
-                      <span className="display text-[clamp(2.4rem,11vw,3.5rem)] text-ivory transition-colors group-hover:text-gold-light">
+                      <span className="display text-[clamp(2rem,9vw,3rem)] text-ivory transition-colors group-hover:text-gold-light">
                         {item.label}
                       </span>
                     </Link>

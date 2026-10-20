@@ -20,7 +20,7 @@ export function Footer() {
         <div className="flex flex-col gap-8 border-b border-ivory/10 pb-10 lg:flex-row lg:items-end lg:justify-between lg:gap-10 lg:pb-16">
           <div>
             <Logo size="lg" />
-            <p className="display mt-8 max-w-xl text-[clamp(2rem,5vw,4rem)] text-ivory lg:mt-10">
+            <p className="display mt-8 max-w-xl text-[clamp(1.75rem,4vw,3.25rem)] text-ivory lg:mt-10">
               The art of a <em className="font-normal italic text-gold-light">perfect</em> cut.
             </p>
           </div>
